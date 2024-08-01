@@ -1,0 +1,7 @@
+{
+    "name": "ljh740 gallery",
+    "description": "自用Task脚本",
+    "task": [
+       "0 9 * * * https://raw.githubusercontent.com/ljh740/QuantumultX/master/Task/loknft.js, tag=质押领取, img-url=https://www.leagueofkingdoms.com/img/logo.png,enabled=true"
+    ]
+   }
