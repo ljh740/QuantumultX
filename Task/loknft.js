@@ -8,10 +8,16 @@ const $ = new Env("lokanft");
 const address = "0x4Bd2450B4D6Feaff8dCc428f514F10851BF974c6";
 const url = "https://api-lok-beta.leagueofkingdoms.com/api/staking/claim/myreward";
 
-$.post(url,{"address":address})
+$.http.post(url,{"address":address})
 .then( (response) => {
     const data = JSON.parse(response.body);
-    $.msg("loknft","sign",data);
+    if (data.result) {
+      $.msg("loknft","sign成功");
+    }else if (data.result === false) {
+      $.info("请求成功，已签到");
+    }else {
+      $.msg("loknft","sign异常");
+    }
 })
 .then(() => $done());
 
