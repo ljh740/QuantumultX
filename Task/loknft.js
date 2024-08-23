@@ -5,7 +5,7 @@
 
 const $ = new Env("lokanft");
 
-const address = "0x4Bd2450B4D6Feaff8dCc428f514F10851BF974c6";
+const address = "0x4bd2450b4d6feaff8dcc428f514f10851bf974c6";
 const url = "https://api-lok-beta.leagueofkingdoms.com/api/staking/claim/myreward";
 
 $.http.post(url,{"address":address})
