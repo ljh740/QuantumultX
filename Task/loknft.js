@@ -3,13 +3,30 @@
  * @author: ljh740
  */
 
-const $ = new Env("lokanft");
+const { request } = require('http');
+
+const $ = new Env("lokanft",{
+  "headers": {
+  "Content-Type":"application/json; charset=utf-8",
+  "Cookie": "AWSALB=OtVNBw94lNu+hYWZioEGZiugGhvOR6XfnKAaVVu2nJ6KLZzk1eIjwdlGE/nfydjhMGVx95jR4+4rmr/N/wfYrfdqvrtFeIykegpGzdJiJm+7NOU0eyU7K1EJQKH+; AWSALBCORS=OtVNBw94lNu+hYWZioEGZiugGhvOR6XfnKAaVVu2nJ6KLZzk1eIjwdlGE/nfydjhMGVx95jR4+4rmr/N/wfYrfdqvrtFeIykegpGzdJiJm+7NOU0eyU7K1EJQKH+; connect.sid=s%3ApZcG0NM_QjnmLjJFC8kjp78NsxpPKcv0.4RAwx0sB8FArc%2BSgsPe%2BrjhHIj6DvJtKis%2BAha1R%2FNw"
+  }
+});
 
 const address = "0x4bd2450b4d6feaff8dcc428f514f10851bf974c6";
 const url = "https://api-lok-beta.leagueofkingdoms.com/api/staking/claim/myreward";
 
-$.http.post(url,{"address":address})
+$.http.post({
+  url: url,
+  "body": JSON.stringify({
+    "address":address
+  }),
+  "headers": {
+  "Content-Type":"application/json; charset=utf-8",
+  "Cookie": "AWSALB=OtVNBw94lNu+hYWZioEGZiugGhvOR6XfnKAaVVu2nJ6KLZzk1eIjwdlGE/nfydjhMGVx95jR4+4rmr/N/wfYrfdqvrtFeIykegpGzdJiJm+7NOU0eyU7K1EJQKH+; AWSALBCORS=OtVNBw94lNu+hYWZioEGZiugGhvOR6XfnKAaVVu2nJ6KLZzk1eIjwdlGE/nfydjhMGVx95jR4+4rmr/N/wfYrfdqvrtFeIykegpGzdJiJm+7NOU0eyU7K1EJQKH+; connect.sid=s%3ApZcG0NM_QjnmLjJFC8kjp78NsxpPKcv0.4RAwx0sB8FArc%2BSgsPe%2BrjhHIj6DvJtKis%2BAha1R%2FNw"
+  }
+})
 .then( (response) => {
+    $.info(response.body);
     const data = JSON.parse(response.body);
     if (data.result) {
       $.msg("loknft","sign成功");
@@ -484,7 +501,7 @@ function Env(name, opts) {
         const method = request.method
           ? request.method.toLocaleLowerCase()
           : 'post'
-  
+        this.info(JSON.stringify(request))
         // 如果指定了请求体, 但没指定 `Content-Type`、`content-type`, 则自动生成。
         if (
           request.body &&
