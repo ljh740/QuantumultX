@@ -2,6 +2,7 @@
     "name": "ljh740 gallery",
     "description": "自用Task脚本",
     "task": [
-       "0 9 * * * https://raw.githubusercontent.com/ljh740/QuantumultX/master/Task/loknft.js, tag=质押领取, img-url=https://raw.githubusercontent.com/erdongchanyo/icon/main/Policy-Filter/Game.png, enabled=true"
+        "0 9 * * * https://raw.githubusercontent.com/ljh740/QuantumultX/master/Task/loknft.js, tag=质押领取, img-url=https://raw.githubusercontent.com/erdongchanyo/icon/main/Policy-Filter/Game.png, enabled=true",
+        "0 9 * * * https://raw.githubusercontent.com/chavyleung/scripts/master/follow/follow.js, tag=follow签到, img-url=https://raw.githubusercontent.com/RSSNext/Follow/refs/heads/dev/resources/icon.png, enabled=true",        
     ]
-   }
+}
